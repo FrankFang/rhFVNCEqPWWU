@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Tagging, type: :model do
   context 'create' do
+    before :each do
+      @user = User.create!(email: 'skjdksj@qq.com', password: '123456', password_confirmation: '123456')
+    end
     it 'require record' do
       tag = Tag.create! name: 'test'
       tagging = Tagging.create tag: tag
@@ -16,7 +19,7 @@ RSpec.describe Tagging, type: :model do
     end
     it 'has record and tag' do
       tag = Tag.create! name: 'test'
-      record = Record.create amount: 10000, category: 'income'
+      record = Record.create amount: 10000, category: 'income', user: @user
       tagging = Tagging.create tag: tag, record: record
       expect(tag.records.first.id).to eq record.id
       expect(record.tags.first.id).to eq tag.id
@@ -24,8 +27,8 @@ RSpec.describe Tagging, type: :model do
     it 'has records and tags' do
       tag1 = Tag.create! name: 'test1'
       tag2 = Tag.create! name: 'test2'
-      record1 = Record.create amount: 10000, category: 'income'
-      record2 = Record.create amount: 10000, category: 'income'
+      record1 = Record.create amount: 10000, category: 'income', user: @user
+      record2 = Record.create amount: 10000, category: 'income', user: @user
       Tagging.create tag: tag1, record: record1
       Tagging.create tag: tag1, record: record2
       Tagging.create tag: tag2, record: record1

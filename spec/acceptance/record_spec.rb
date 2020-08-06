@@ -2,11 +2,12 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource "Records" do
-  let(:record) { Record.create! amount: 10000, category: 'income' }
+  let(:user) { User.create!(email: 'lakdjslkjd@qq.com', password: '123456', password_confirmation: '123456') }
+  let(:record) { Record.create! amount: 10000, category: 'income', user: user }
   let(:id) { record.id }
-  let(:amount) {10000}
-  let(:category) {'income'}
-  let(:notes){'中奖'}
+  let(:amount) { 10000 }
+  let(:category) { 'income' }
+  let(:notes) { '中奖' }
   post "/records" do
     parameter :amount, '金额', type: :integer, required: true
     parameter :category, '类型:1 outgoings|2 income', type: :string, required: true
@@ -31,10 +32,10 @@ resource "Records" do
 
     let(:page) { 1 }
 
-    (1..11).to_a.map do
-      Record.create! amount: 10000, category: 'income'
-    end
     example '获取所有记录' do
+      (1..11).to_a.map do
+        Record.create! amount: 10000, category: 'income', user: user
+      end
       sign_in
       do_request
       expect(status).to eq 200
