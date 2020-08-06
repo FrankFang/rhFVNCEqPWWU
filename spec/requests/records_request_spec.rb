@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Record", type: :request do
   before :each do
-    @user = User.create!(email: 'skjdksj@qq.com', password: '123456', password_confirmation: '123456')
+    @user = create(:user)
   end
   context 'create' do
     it 'should not create a record before sign in' do

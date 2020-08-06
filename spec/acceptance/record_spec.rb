@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'rspec_api_documentation/dsl'
 
 resource "Records" do
-  let(:user) { User.create!(email: 'lakdjslkjd@qq.com', password: '123456', password_confirmation: '123456') }
+  let(:user) { create(:user, email: 'lakdjslkjd@qq.com')}
   let(:record) { Record.create! amount: 10000, category: 'income', user: user }
   let(:id) { record.id }
   let(:amount) { 10000 }
