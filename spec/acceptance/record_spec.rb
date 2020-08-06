@@ -3,7 +3,7 @@ require 'rspec_api_documentation/dsl'
 
 resource "Records" do
   let(:user) { create(:user, email: 'lakdjslkjd@qq.com')}
-  let(:record) { Record.create! amount: 10000, category: 'income', user: user }
+  let(:record) { create :record }
   let(:id) { record.id }
   let(:amount) { 10000 }
   let(:category) { 'income' }
@@ -34,7 +34,7 @@ resource "Records" do
 
     example '获取所有记录' do
       (1..11).to_a.map do
-        Record.create! amount: 10000, category: 'income', user: user
+        create :record, user: user
       end
       sign_in
       do_request

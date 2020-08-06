@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Taggings", type: :request do
   before :each do
     @user = create(:user)
-    @record = Record.create! amount: 10000, category: 'income', user: @user
+    @record = create :record
     @tag = Tag.create! name: 'test'
     @tagging = Tagging.create tag: @tag, record: @record
     (1..10).to_a.map do |n|

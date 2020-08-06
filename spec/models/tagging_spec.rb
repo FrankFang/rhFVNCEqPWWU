@@ -12,14 +12,14 @@ RSpec.describe Tagging, type: :model do
       expect(tagging.errors[:record][0]).to eq('记录不能为空')
     end
     it 'require tag' do
-      record = Record.create amount: 10000, category: 'income'
+      record = create :record
       tagging = Tagging.create record: record
       expect(tagging.errors.details[:tag][0][:error]).to eq(:blank)
       expect(tagging.errors[:tag][0]).to eq('标签不能为空')
     end
     it 'has record and tag' do
       tag = Tag.create! name: 'test'
-      record = Record.create amount: 10000, category: 'income', user: @user
+      record = create :record, user: @user
       tagging = Tagging.create tag: tag, record: record
       expect(tag.records.first.id).to eq record.id
       expect(record.tags.first.id).to eq tag.id
@@ -27,8 +27,8 @@ RSpec.describe Tagging, type: :model do
     it 'has records and tags' do
       tag1 = Tag.create! name: 'test1'
       tag2 = Tag.create! name: 'test2'
-      record1 = Record.create amount: 10000, category: 'income', user: @user
-      record2 = Record.create amount: 10000, category: 'income', user: @user
+      record1 = create :record
+      record2 = create :record
       Tagging.create tag: tag1, record: record1
       Tagging.create tag: tag1, record: record2
       Tagging.create tag: tag2, record: record1
