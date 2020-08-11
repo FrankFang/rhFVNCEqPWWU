@@ -4,10 +4,10 @@ RSpec.describe "Taggings", type: :request do
   before :each do
     @user = create(:user)
     @record = create :record
-    @tag = Tag.create! name: 'test'
+    @tag = create :tag
     @tagging = Tagging.create tag: @tag, record: @record
     (1..10).to_a.map do |n|
-      Tagging.create! record: @record, tag: Tag.create!(name: "test#{n}")
+      Tagging.create! record: @record, tag: create(:tag)
     end
   end
   context 'create' do

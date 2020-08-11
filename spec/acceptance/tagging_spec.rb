@@ -3,7 +3,7 @@ require 'rspec_api_documentation/dsl'
 
 resource "Taggings" do
   let(:user) { create :user}
-  let(:tag) { Tag.create! name: 'test' }
+  let(:tag) { create :tag }
   let(:tag_id) { tag.id }
   let(:record) { create :record }
   let(:record_id) { record.id }
@@ -11,7 +11,7 @@ resource "Taggings" do
   let(:id) { tagging.id }
   let(:taggings) {
     (1..10).to_a.map do |n|
-      Tagging.create! record: record, tag: Tag.create!(name: "test#{n}")
+      Tagging.create! record: record, tag: create(:tag)
     end
   }
   let(:create_taggings) {
