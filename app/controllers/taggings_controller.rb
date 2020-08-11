@@ -9,7 +9,7 @@ class TaggingsController < ApplicationController
   end
 
   def create
-    render_resource Tagging.create create_params
+    render_resource Tagging.create create_params.merge user: current_user
   end
 
   def destroy
