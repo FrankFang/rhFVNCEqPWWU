@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:jrg-team/rspec_api_documentation.git
+  remote: https://e.coding.net/frankfang/rspec_api_documentation/rspec_api_documentation.git
   revision: 0cffd97365b0be5dbedb22740c8c232671e4819e
   specs:
     rspec_api_documentation (6.1.0)

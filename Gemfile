@@ -16,7 +16,7 @@ gem 'puma', '~> 4.1'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
-gem 'rspec_api_documentation', '6.1.0', git: 'git@github.com:jrg-team/rspec_api_documentation.git'
+gem 'rspec_api_documentation', '6.1.0', git: 'https://e.coding.net/frankfang/rspec_api_documentation/rspec_api_documentation.git'
 gem 'kaminari'
 
 # Use Active Storage variant
