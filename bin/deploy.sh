@@ -7,7 +7,7 @@ if [[ $changes ]]; then
   echo 'Please commit your code!'
   exit 1
 else
-  ssh blog@server1 'bash -s' < bin/remote_deploy.sh
+  ssh morney@server1 'bash -s' < bin/remote_deploy.sh
   echo "OK!"
   exit 0
 fi

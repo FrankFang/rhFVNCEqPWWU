@@ -68,3 +68,10 @@ start doc/api/index.html 或者 open doc/api/index.html
 bin/rspec -e 'should create a record'
 ```
 
+## 启动 Nginx
+
+```bash
+docker run --name nginx1 --network=host \
+-v /home/morney/app/config/nginx.conf:/etc/nginx/conf.d/default.conf \
+-v /home/morney/static/:/usr/share/nginx/html/ -d nginx:1.19.1
+```
